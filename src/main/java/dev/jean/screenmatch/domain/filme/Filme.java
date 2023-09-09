@@ -1,23 +1,38 @@
 package dev.jean.screenmatch.domain.filme;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "filmes")
 public class Filme {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String nome;
     private Integer duracaoEmMinutos;
-    private Integer anoDeLancamento;
+    private Integer anoLancamento;
     private String genero;
+
+    public Filme() {
+    }
 
     public Filme(DadosCadastroFilme dados) {
         this.nome = dados.nome();
         this.duracaoEmMinutos = dados.duracao();
-        this.anoDeLancamento = dados.ano();
+        this.anoLancamento = dados.ano();
         this.genero = dados.genero();
     }
 
     public Filme(String nome, Integer duracao, Integer ano, String genero) {
         this.nome = nome;
         this.duracaoEmMinutos = duracao;
-        this.anoDeLancamento = ano;
+        this.anoLancamento = ano;
         this.genero = genero;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getNome() {
@@ -28,8 +43,8 @@ public class Filme {
         return duracaoEmMinutos;
     }
 
-    public Integer getAnoDeLancamento() {
-        return anoDeLancamento;
+    public Integer getAnoLancamento() {
+        return anoLancamento;
     }
 
     public String getGenero() {
@@ -39,9 +54,10 @@ public class Filme {
     @Override
     public String toString() {
         return "Filme{" +
+                "id=" + id +
                 "nome='" + nome + '\'' +
                 ", duracao=" + duracaoEmMinutos +
-                ", ano=" + anoDeLancamento +
+                ", ano=" + anoLancamento +
                 ", genero='" + genero + '\'' +
                 '}';
     }
