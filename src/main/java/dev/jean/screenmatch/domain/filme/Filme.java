@@ -66,6 +66,13 @@ public class Filme {
         return new FilmeBuilder();
     }
 
+    public void alterarDados(DadosAlteracaoFilme dados) {
+        this.nome = dados.nome();
+        this.duracaoEmMinutos = dados.duracao();
+        this.anoLancamento = dados.ano();
+        this.genero = dados.genero();
+    }
+
     public static class FilmeBuilder {
     }
 }
